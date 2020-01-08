@@ -36,4 +36,10 @@ public class SqMaxTest {
         int result = SqMax.max(9, 9, 9, 9);
         assertThat(result, is(9));
     }
+
+    @Test
+    public void whenThirdMaxAndMinFour() {
+        int result = SqMax.max(4, 3, 12, 1);
+        assertThat(result, is(12));
+    }
 }
