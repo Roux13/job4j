@@ -60,4 +60,20 @@ public class CheckTest {
         boolean result = check.mono(input);
         assertThat(result, is(false));
     }
+
+    @Test
+    public void whenDataEmptyThenFalse() {
+        Check check = new Check();
+        boolean[] input = new boolean[] {};
+        boolean result = check.mono(input);
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenDataHasOneValueThenTrue() {
+        Check check = new Check();
+        boolean[] input = new boolean[] {false};
+        boolean result = check.mono(input);
+        assertThat(result, is(true));
+    }
 }
