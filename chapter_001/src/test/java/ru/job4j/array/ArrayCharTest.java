@@ -21,11 +21,4 @@ public class ArrayCharTest {
         assertThat(result, is(false));
     }
 
-    @Test
-    public void whenPrefixBiggerThanWordThenFalse() {
-        char[] word = {'H', 'e', 'l', 'l', 'o'};
-        char[] pref = {'H', 'e', 'l', 'l', 'o', 'o'};
-        boolean result =ArrayChar.startsWith(word, pref);
-        assertThat(result, is(false));
-    }
 }
