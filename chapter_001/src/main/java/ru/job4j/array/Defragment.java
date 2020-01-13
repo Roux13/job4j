@@ -6,14 +6,14 @@ public class Defragment {
             String cell = array[index];
 
             if (cell == null) {
-                int findIndex = index + 1;
+                int searchIndex = index + 1;
 
-                while (findIndex < (array.length) && array[findIndex] == null) {
-                    findIndex++;
+                while (searchIndex < (array.length) && array[searchIndex] == null) {
+                    searchIndex++;
                 }
-                if (findIndex < (array.length)) {
-                    array[index] = array[findIndex];
-                    array[findIndex] = cell;
+                if (searchIndex < (array.length)) {
+                    array[index] = array[searchIndex];
+                    array[searchIndex] = cell;
                 }
                 // переместить первую не null ячейку
                 // Здесь нужен цикл while
