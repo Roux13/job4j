@@ -8,7 +8,7 @@ import org.junit.Test;
 public class CounterTest {
 
     @Test
-    public void whenStartIs0FinishIs1(){
+    public void whenStartIs0FinishIs1() {
         Counter check = new Counter();
         int inStart = 0;
         int inFinish = 1;
@@ -19,7 +19,7 @@ public class CounterTest {
     }
 
     @Test
-    public void whenStartIs1FinishIs2(){
+    public void whenStartIs1FinishIs2() {
         Counter check = new Counter();
         int inStart = 1;
         int inFinish = 2;
@@ -30,7 +30,7 @@ public class CounterTest {
     }
 
     @Test
-    public void whenStartIs1FinishIs3(){
+    public void whenStartIs1FinishIs3() {
         Counter check = new Counter();
         int inStart = 1;
         int inFinish = 3;
@@ -41,7 +41,7 @@ public class CounterTest {
     }
 
     @Test
-    public void whenStartIs1FinishIs10(){
+    public void whenStartIs1FinishIs10() {
         Counter check = new Counter();
         int inStart = 1;
         int inFinish = 10;

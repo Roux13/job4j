@@ -15,7 +15,7 @@ import java.util.Locale;
  */
 
 
-public class Calculator{
+public class Calculator {
 
     public static void add(double first, double second) {
         System.out.printf(Locale.ENGLISH, "%,.1f + %,.1f = %,.1f%n", first, second, first + second);

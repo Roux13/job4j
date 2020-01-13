@@ -5,8 +5,7 @@ public class CheckPrimeNumber {
         boolean prime = true;
         if (finish < 2) {
             prime = false;
-        }
-        else {
+        } else {
             for (int i = 2; i < finish; i++) {
                 if (finish % i == 0) {
                     prime = false;
