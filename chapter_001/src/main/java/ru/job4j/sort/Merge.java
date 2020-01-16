@@ -19,17 +19,13 @@ public class Merge {
             }
             rslIndex++;
         }
-        if (leftIndex < left.length) {
-            for (int i = leftIndex; i < left.length; i++) {
-                rsl[rslIndex] = left[i];
-                rslIndex++;
-            }
+        for (int i = leftIndex; i < left.length; i++) {
+            rsl[rslIndex] = left[i];
+            rslIndex++;
         }
-        if (rightIndex < right.length) {
-            for (int i = rightIndex; i < right.length; i++) {
-                rsl[rslIndex] = right[i];
-                rslIndex++;
-            }
+        for (int i = rightIndex; i < right.length; i++) {
+            rsl[rslIndex] = right[i];
+            rslIndex++;
         }
         return rsl;
     }
