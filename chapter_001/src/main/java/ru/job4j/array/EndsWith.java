@@ -10,7 +10,6 @@ public class EndsWith {
                     break;
                 }
             }
-
         return result;
     }
 }

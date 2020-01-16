@@ -4,7 +4,6 @@ public class Defragment {
     public static String[] compress(String[] array) {
         for (int index = 0; index < array.length; index++) {
             String cell = array[index];
-
             if (cell == null) {
                 int searchIndex = index + 1;
 
@@ -15,8 +14,6 @@ public class Defragment {
                     array[index] = array[searchIndex];
                     array[searchIndex] = cell;
                 }
-                // переместить первую не null ячейку
-                // Здесь нужен цикл while
             }
             System.out.print(array[index] + " ");
         }

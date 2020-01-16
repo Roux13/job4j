@@ -66,7 +66,7 @@ public class CheckTest {
         Check check = new Check();
         boolean[] input = new boolean[] {};
         boolean result = check.mono(input);
-        assertThat(result, is(false));
+        assertThat(result, is(true));
     }
 
     @Test
