@@ -85,4 +85,44 @@ public class PointTest {
 
         Assert.assertEquals(expected, out, 0.01);
     }
+
+    @Test
+    public void distance3d000And000() {
+        Point p1 = new Point(0, 0, 0);
+        Point p2 = new Point(0, 0, 0);
+        double expected = 0.0;
+        double out = p1.distance3d(p2);
+
+        Assert.assertEquals(expected, out, 0.01);
+    }
+
+    @Test
+    public void distance3d000And002() {
+        Point p1 = new Point(0, 0, 0);
+        Point p2 = new Point(0, 0, 2);
+        double expected = 2.0;
+        double out = p1.distance3d(p2);
+
+        Assert.assertEquals(expected, out, 0.01);
+    }
+
+    @Test
+    public void distance3d002And002() {
+        Point p1 = new Point(0, 0, 2);
+        Point p2 = new Point(0, 0, 2);
+        double expected = 0.0;
+        double out = p1.distance3d(p2);
+
+        Assert.assertEquals(expected, out, 0.01);
+    }
+
+    @Test
+    public void distance3d200And002() {
+        Point p1 = new Point(2, 0, 0);
+        Point p2 = new Point(0, 0, 2);
+        double expected = 2.83;
+        double out = p1.distance3d(p2);
+
+        Assert.assertEquals(expected, out, 0.01);
+    }
 }
