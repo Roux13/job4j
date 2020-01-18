@@ -11,6 +11,11 @@ public class Point {
         this.y = second;
     }
 
+    /**
+     * The method computes the distance between two points.
+     * @param that - another point, the distance to which we compute from the current point.
+     * @return - distance between the points.
+     */
     public double distance(Point that) {
         return Math.sqrt(Math.pow((that.x - this.x), 2) + Math.pow((that.y - this.y), 2));
     }
