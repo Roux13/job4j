@@ -28,4 +28,58 @@ public class MaxTest {
         int result = Max.max(-2, 1);
         assertThat(result, is(1));
     }
+
+    @Test
+    public void when1Or2Or3Then3() {
+        int result = Max.max(1, 2, 3);
+        assertThat(result, is(3));
+    }
+
+    @Test
+    public void when2Or3Or1Then3() {
+        int result = Max.max(2, 3, 1);
+        assertThat(result, is(3));
+    }
+
+    @Test
+    public void when3Or1Or2Then3() {
+        int result = Max.max(3, 1, 2);
+        assertThat(result, is(3));
+    }
+
+    @Test
+    public void whenAllAre1Then1() {
+        int result = Max.max(1, 1, 1);
+        assertThat(result, is(1));
+    }
+
+    @Test
+    public void when1Or2Or3Or4Then4() {
+        int result = Max.max(1, 2, 3, 4);
+        assertThat(result, is(4));
+    }
+
+    @Test
+    public void when4Or1Or2Or3Then4() {
+        int result = Max.max(4, 1, 2, 3);
+        assertThat(result, is(4));
+    }
+
+    @Test
+    public void when3Or4Or1Or2Then4() {
+        int result = Max.max(3, 4, 1, 2);
+        assertThat(result, is(4));
+    }
+
+    @Test
+    public void when2Or3Or4Or1Then4() {
+        int result = Max.max(2, 3, 4, 1);
+        assertThat(result, is(4));
+    }
+
+    @Test
+    public void whenAllAre4Then4() {
+        int result = Max.max(4, 4, 4, 4);
+        assertThat(result, is(4));
+    }
 }
