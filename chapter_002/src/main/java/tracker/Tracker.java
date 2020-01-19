@@ -23,7 +23,7 @@ public class Tracker {
      * @param item новая заявка
      */
     public Item add(Item item) {
-        item.setId(this.generateId());
+        item.setId(generateId());
         this.items[this.position++] = item;
         return item;
     }
@@ -42,7 +42,7 @@ public class Tracker {
      * @return массив с найденными заявками.
      */
     public Item[] findByName(String key) {
-        Item[] searchItems = this.findAll();
+        Item[] searchItems = findAll();
         Item[] result = new Item[searchItems.length];
         int index = 0;
         for (Item item : searchItems) {
@@ -59,14 +59,13 @@ public class Tracker {
      * @return если заявка найденаЮ возвращает эту заявку, если не найдена то null.
      */
     public Item findById(String id) {
-        Item result = null;
-        Item[] searchItems = this.findAll();
-        for (Item item : searchItems) {
-            if (item.getId().equals(id)) {
-                result = item;
-            }
-        }
-        return result;
+        return indexOf(id) != -1 ? items[indexOf(id)] : null;
+    }
+
+    public void replace(String id, Item item) {
+        int index = indexOf(id);
+        item.setId(id);
+        this.items[index] = item;
     }
 
     /**
@@ -77,5 +76,21 @@ public class Tracker {
     private String generateId() {
         Random rnd = new Random();
         return String.valueOf(rnd.nextLong() + System.currentTimeMillis());
+    }
+
+    /**
+     * Метод возвращает индекс в массиве для заявки с заданным id.
+     * @param id
+     * @return индекс соответствующей заявки если она найдена, иначе -1.
+     */
+    private int indexOf(String id) {
+        int rsl = -1;
+        Item[] searchItems = findAll();
+        for (int i = 0; i < searchItems.length; i++) {
+            if (items[i].getId().equals(id)) {
+                rsl = i;
+            }
+        }
+        return rsl;
     }
 }
