@@ -1,4 +1,6 @@
-package ru.job4j.inheritance;
+package ru.job4j.inheritance.professions;
+
+import ru.job4j.inheritance.Animal;
 
 import java.util.List;
 

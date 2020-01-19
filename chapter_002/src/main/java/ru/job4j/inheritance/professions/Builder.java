@@ -1,4 +1,4 @@
-package ru.job4j.inheritance;
+package ru.job4j.inheritance.professions;
 
 public class Builder extends Engineer {
 
