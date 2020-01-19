@@ -29,6 +29,22 @@ public class Tracker {
     }
 
     /**
+     * Метод удаляет заявку соответствующую переданному id.
+     * @param id
+     */
+    public void delete(String id) {
+        int index = indexOf(id);
+        if (index != -1) {
+            int start = index + 1;
+            int distPos = index;
+            int size = this.position - index;
+            System.arraycopy(this.items, start, this.items, distPos, size);
+            this.items[this.position] = null;
+            this.position--;
+        }
+    }
+
+    /**
      * Метод возвращает массив заявок без null элементов.
      * @return Массив без null элементов.
      */
@@ -59,9 +75,14 @@ public class Tracker {
      * @return если заявка найденаЮ возвращает эту заявку, если не найдена то null.
      */
     public Item findById(String id) {
-        return indexOf(id) != -1 ? items[indexOf(id)] : null;
+        return indexOf(id) != -1 ? this.items[indexOf(id)] : null;
     }
 
+    /**
+     * Метод заменяет заявку соответствующую id на новую заявку.
+     * @param id
+     * @param item заявка, которой необходимо заменить прежнюю.
+     */
     public void replace(String id, Item item) {
         int index = indexOf(id);
         item.setId(id);
@@ -87,7 +108,7 @@ public class Tracker {
         int rsl = -1;
         Item[] searchItems = findAll();
         for (int i = 0; i < searchItems.length; i++) {
-            if (items[i].getId().equals(id)) {
+            if (this.items[i].getId().equals(id)) {
                 rsl = i;
             }
         }
