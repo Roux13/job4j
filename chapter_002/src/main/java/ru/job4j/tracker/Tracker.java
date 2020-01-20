@@ -88,8 +88,6 @@ public class Tracker {
         if (index != -1) {
             item.setId(id);
             this.items[index] = item;
-        } else {
-            add(item);
         }
     }
 

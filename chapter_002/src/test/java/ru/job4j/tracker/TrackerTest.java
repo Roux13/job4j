@@ -120,7 +120,7 @@ public class TrackerTest {
         Item bug = new Item("Bug");
         String id = bug.getId();
         Item bugWithDesc = new Item("Bug with description");
-        Item[] result = {bugWithDesc};
+        Item[] result = tracker.findAll();
         tracker.replace(id, bugWithDesc);
         assertThat(tracker.findByName(bugWithDesc.getName()), is(result));
     }
