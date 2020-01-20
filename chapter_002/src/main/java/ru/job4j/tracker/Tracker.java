@@ -71,21 +71,26 @@ public class Tracker {
     /**
      * Метод возвращает заявку с заданным id.
      * @param id заданный параметр поиска заявки.
-     * @return если заявка найденаЮ возвращает эту заявку, если не найдена то null.
+     * @return если заявка найдена, возвращает эту заявку, если не найдена то null.
      */
     public Item findById(String id) {
-        return indexOf(id) != -1 ? this.items[indexOf(id)] : null;
+        int index = indexOf(id);
+        return index != -1 ? this.items[index] : null;
     }
 
     /**
-     * Метод заменяет заявку соответствующую id на новую заявку.
+     * Метод заменяет заявку соответствующую id на новую заявку, если заявки с таким id нет, добавляет новую.
      * @param id
      * @param item заявка, которой необходимо заменить прежнюю.
      */
     public void replace(String id, Item item) {
         int index = indexOf(id);
-        item.setId(id);
-        this.items[index] = item;
+        if (index != -1) {
+            item.setId(id);
+            this.items[index] = item;
+        } else {
+            add(item);
+        }
     }
 
     /**
@@ -108,6 +113,7 @@ public class Tracker {
         for (int i = 0; i < this.position; i++) {
             if (this.items[i].getId().equals(id)) {
                 rsl = i;
+                break;
             }
         }
         return rsl;

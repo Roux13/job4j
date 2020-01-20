@@ -115,6 +115,17 @@ public class TrackerTest {
     }
 
     @Test
+    public void whenReplaceButThatIdNotExist() {
+        Tracker tracker = new Tracker();
+        Item bug = new Item("Bug");
+        String id = bug.getId();
+        Item bugWithDesc = new Item("Bug with description");
+        Item[] result = {bugWithDesc};
+        tracker.replace(id, bugWithDesc);
+        assertThat(tracker.findByName(bugWithDesc.getName()), is(result));
+    }
+
+    @Test
     public void whenDelete() {
         Tracker tracker = new Tracker();
         Item bug = new Item("Bug");
