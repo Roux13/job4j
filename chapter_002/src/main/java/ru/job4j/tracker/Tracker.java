@@ -58,12 +58,11 @@ public class Tracker {
      * @return массив с найденными заявками.
      */
     public Item[] findByName(String key) {
-        Item[] searchItems = findAll();
-        Item[] result = new Item[searchItems.length];
+        Item[] result = new Item[this.items.length];
         int index = 0;
-        for (Item item : searchItems) {
-            if (item.getName().equals(key)) {
-                result[index++] = item;
+        for (int i = 0; i < this.position; i++) {
+            if (this.items[i].getName().equals(key)) {
+                result[index++] = this.items[i];
             }
         }
         return Arrays.copyOf(result, index);
@@ -106,8 +105,7 @@ public class Tracker {
      */
     private int indexOf(String id) {
         int rsl = -1;
-        Item[] searchItems = findAll();
-        for (int i = 0; i < searchItems.length; i++) {
+        for (int i = 0; i < this.position; i++) {
             if (this.items[i].getId().equals(id)) {
                 rsl = i;
             }
