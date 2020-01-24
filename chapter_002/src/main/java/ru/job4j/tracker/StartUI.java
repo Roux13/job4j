@@ -7,29 +7,28 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int select = input.askInt("Select: ");
-            if (select == 0) {
-                StartUI.createItem(input, tracker);
-                System.out.println(SEPARATOR);
-            } else if (select == 1) {
-                StartUI.showItems(input, tracker);
-                System.out.println(SEPARATOR);
-            } else if (select == 2) {
-                StartUI.editItem(input, tracker);
-                System.out.println(SEPARATOR);
-            } else if (select == 3) {
-                StartUI.deleteItem(input, tracker);
-                System.out.println(SEPARATOR);
-            } else if (select == 4) {
-                StartUI.findItemById(input, tracker);
-                System.out.println(SEPARATOR);
-            } else if (select == 5) {
-                StartUI.findItemByName(input, tracker);
-                System.out.println(SEPARATOR);
-            } else if (select == 6) {
-                run = false;
-                System.out.println("=== Exit from the program. ===");
+            try {
+                int select = input.askInt("Select (enter a number from 0 to 6): ");
+                if (select == 0) {
+                    StartUI.createItem(input, tracker);
+                } else if (select == 1) {
+                    StartUI.showItems(input, tracker);
+                } else if (select == 2) {
+                    StartUI.replaceItem(input, tracker);
+                } else if (select == 3) {
+                    StartUI.deleteItem(input, tracker);
+                } else if (select == 4) {
+                    StartUI.findItemById(input, tracker);
+                } else if (select == 5) {
+                    StartUI.findItemByName(input, tracker);
+                } else if (select == 6) {
+                    run = false;
+                    System.out.println("=== Exit from the program. ===");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong input.");
             }
+            System.out.println(SEPARATOR);
         }
     }
 
@@ -48,24 +47,34 @@ public class StartUI {
         }
     }
 
-    public static void editItem(Input input, Tracker tracker) {
+    public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Edit the Item ===");
         String id = input.askStr("Enter id of Item for editing: ");
         String newName = input.askStr("Enter new Item name: ");
-        tracker.replace(id, new Item(newName));
+        if (tracker.replace(id, new Item(newName))) {
+            System.out.println("The Item with id: \"" +  id + "\" is edited.");
+        } else {
+            System.out.println("The Item with id \"" + id + "\" is not found.");
+        }
     }
 
     public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete the Item ===");
         String id = input.askStr("Enter id of Item for deleting: ");
-        tracker.delete(id);
+        if (tracker.delete(id)) {
+            System.out.println("The Item with id: \"" +  id + "\" is deleted.");
+        } else {
+            System.out.println("The Item with id \"" + id + "\" is not found.");
+        }
     }
 
     public static void findItemById(Input input, Tracker tracker) {
         System.out.println("=== Search an Item by Id ===");
         String id = input.askStr("Enter id of Item for searching: ");
         Item find = tracker.findById(id);
-        System.out.println(find.getId() + " " + find.getName());
+        if (find != null) {
+            System.out.println(find.getId() + " " + find.getName());
+        }
     }
 
     public static void findItemByName(Input input, Tracker tracker) {

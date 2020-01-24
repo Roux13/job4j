@@ -32,8 +32,9 @@ public class Tracker {
      * Метод удаляет заявку соответствующую переданному id.
      * @param id
      */
-    public void delete(String id) {
+    public boolean delete(String id) {
         int index = indexOf(id);
+        boolean success = false;
         if (index != -1) {
             int start = index + 1;
             int distPos = index;
@@ -41,7 +42,9 @@ public class Tracker {
             System.arraycopy(this.items, start, this.items, distPos, size);
             this.items[this.position] = null;
             this.position--;
+            success = true;
         }
+        return success;
     }
 
     /**
@@ -83,12 +86,15 @@ public class Tracker {
      * @param id
      * @param item заявка, которой необходимо заменить прежнюю.
      */
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
         int index = indexOf(id);
+        boolean success = false;
         if (index != -1) {
             item.setId(id);
             this.items[index] = item;
+            success = true;
         }
+        return success;
     }
 
     /**
