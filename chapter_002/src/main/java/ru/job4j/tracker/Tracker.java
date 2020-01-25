@@ -20,6 +20,7 @@ public class Tracker {
 
     /**
      * Метод реализующий добавление заявки в хранилище
+     *
      * @param item новая заявка
      */
     public Item add(Item item) {
@@ -30,6 +31,7 @@ public class Tracker {
 
     /**
      * Метод удаляет заявку соответствующую переданному id.
+     *
      * @param id
      */
     public boolean delete(String id) {
@@ -49,6 +51,7 @@ public class Tracker {
 
     /**
      * Метод возвращает массив заявок без null элементов.
+     *
      * @return Массив без null элементов.
      */
     public Item[] findAll() {
@@ -57,6 +60,7 @@ public class Tracker {
 
     /**
      * Метод возвращает массив заявок, имя которых соответствует key.
+     *
      * @param key имя, по которому осуществляется поиск.
      * @return массив с найденными заявками.
      */
@@ -64,7 +68,7 @@ public class Tracker {
         Item[] result = new Item[this.items.length];
         int index = 0;
         for (int i = 0; i < this.position; i++) {
-            if (this.items[i].getName().equals(key)) {
+            if (this.items[i].getName() != null && this.items[i].getName().equals(key)) {
                 result[index++] = this.items[i];
             }
         }
@@ -73,6 +77,7 @@ public class Tracker {
 
     /**
      * Метод возвращает заявку с заданным id.
+     *
      * @param id заданный параметр поиска заявки.
      * @return если заявка найдена, возвращает эту заявку, если не найдена то null.
      */
@@ -83,6 +88,7 @@ public class Tracker {
 
     /**
      * Метод заменяет заявку соответствующую id на новую заявку.
+     *
      * @param id
      * @param item заявка, которой необходимо заменить прежнюю.
      */
@@ -100,6 +106,7 @@ public class Tracker {
     /**
      * Метод генерирует уникальный ключ для заявки.
      * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
+     *
      * @return Уникальный ключ.
      */
     private String generateId() {
@@ -109,6 +116,7 @@ public class Tracker {
 
     /**
      * Метод возвращает индекс в массиве для заявки с заданным id.
+     *
      * @param id
      * @return индекс соответствующей заявки если она найдена, иначе -1.
      */
