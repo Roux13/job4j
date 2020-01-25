@@ -1,6 +1,11 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.StringJoiner;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -20,5 +25,22 @@ public class StartUITest {
         StubAction action = new StubAction();
         new StartUI().init(stubInput, new Tracker(), new UserAction[]{action});
         assertThat(action.isCall(), is(true));
+    }
+
+    @Test
+    public void init() {
+        PrintStream stdOut = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        StubInput stubInput = new StubInput(new String[]{"0"});
+        StubAction action = new StubAction();
+        new StartUI().init(stubInput, new Tracker(), new UserAction[]{action});
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("Menu.")
+                .add("0. Stub action")
+                .add("==============================")
+                .toString();
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(stdOut);
     }
 }
