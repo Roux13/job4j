@@ -7,13 +7,9 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
-            try {
-                int select = input.askInt(String.format("Select (enter a number from 0 to %d): ", actions.length - 1));
+                int select = input.askInt(String.format("Enter a number from 0 to %d: ", actions.length - 1), actions.length);
                 UserAction action = actions[select];
                 run = action.execute(input, tracker);
-            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-                System.out.println("Wrong input.");
-            }
             System.out.println(SEPARATOR);
         }
     }
@@ -27,7 +23,7 @@ public class StartUI {
 
 
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(),
