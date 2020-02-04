@@ -14,7 +14,7 @@ public class CreateActionTest {
         Tracker tracker = new Tracker();
         String[] answers = {newMessage};
         new CreateAction().execute(new StubInput(answers), tracker);
-        Item added = tracker.findAll()[0];
+        Item added = tracker.findAll().get(0);
         String expected = newMessage;
         assertThat(added.getName(), is(expected));
     }

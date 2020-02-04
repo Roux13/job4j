@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.StringJoiner;
 
 import static org.hamcrest.core.Is.is;
@@ -15,7 +16,7 @@ public class StartUITest {
     public void whenExit() {
         StubInput stubInput = new StubInput(new String[]{"0"});
         StubAction action = new StubAction();
-        new StartUI().init(stubInput, new Tracker(), new UserAction[]{action});
+        new StartUI().init(stubInput, new Tracker(), Arrays.asList(action));
         assertThat(action.isCall(), is(true));
     }
 
@@ -23,7 +24,7 @@ public class StartUITest {
     public void whenWrongInputFirstThenExit() {
         StubInput stubInput = new StubInput(new String[]{"1", "0"});
         StubAction action = new StubAction();
-        new StartUI().init(new ValidateInput(stubInput), new Tracker(), new UserAction[]{action});
+        new StartUI().init(new ValidateInput(stubInput), new Tracker(), Arrays.asList(action));
         assertThat(action.isCall(), is(true));
     }
 
@@ -34,7 +35,7 @@ public class StartUITest {
         System.setOut(new PrintStream(out));
         StubInput stubInput = new StubInput(new String[]{"0"});
         StubAction action = new StubAction();
-        new StartUI().init(stubInput, new Tracker(), new UserAction[]{action});
+        new StartUI().init(stubInput, new Tracker(), Arrays.asList(action));
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0. Stub action")
