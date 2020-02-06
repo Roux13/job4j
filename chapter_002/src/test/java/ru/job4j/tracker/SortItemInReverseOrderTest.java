@@ -7,7 +7,7 @@ import java.util.*;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class SortItemByIdTest {
+public class SortItemInReverseOrderTest {
 
     @Test
     public void sort() {
