@@ -37,20 +37,7 @@ public class SortItemInReverseOrderTest {
         assertThat(items, is(expect));
     }
 
-    @Test
-    public void sortWhenSomeItemIsNull() {
-        Item item1 = new Item("Reboot");
-        Item item2 = null;
-        item1.setId("321");
-        List<Item> items = new ArrayList<>();
-        items.add(item1);
-        items.add(item2);
-        List<Item> expect = Arrays.asList(item2, item1);
-        Collections.sort(items, new SortItemInReverseOrder());
-        assertThat(items, is(expect));
-    }
-
-    @Test
+    @Test(expected = NullPointerException.class)
     public void sortWhenIdIsNull() {
         Item item1 = new Item("Reboot");
         Item item2 = new Item("Bug");
@@ -58,12 +45,10 @@ public class SortItemInReverseOrderTest {
         List<Item> items = new ArrayList<>();
         items.add(item1);
         items.add(item2);
-        List<Item> expect = Arrays.asList(item2, item1);
         Collections.sort(items, new SortItemInReverseOrder());
-        assertThat(items, is(expect));
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void sortWhenNameIsNull() {
         Item item1 = new Item("Reboot");
         Item item2 = new Item(null);
@@ -72,8 +57,6 @@ public class SortItemInReverseOrderTest {
         List<Item> items = new ArrayList<>();
         items.add(item1);
         items.add(item2);
-        List<Item> expect = Arrays.asList(item2, item1);
         Collections.sort(items, new SortItemInReverseOrder());
-        assertThat(items, is(expect));
     }
 }

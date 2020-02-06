@@ -2,10 +2,7 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -22,7 +19,9 @@ public class SortItemInNaturalOrderTest {
         items.add(item1);
         items.add(item2);
         List<Item> expect = Arrays.asList(item2, item1);
-        Collections.sort(items, new SortItemInNaturalOrder());
+        Comparator<Item> comparator = new SortItemInNaturalOrder();
+        Comparator.nullsLast(comparator);
+        Collections.sort(items, comparator);
         assertThat(items, is(expect));
     }
 
@@ -36,24 +35,13 @@ public class SortItemInNaturalOrderTest {
         items.add(item1);
         items.add(item2);
         List<Item> expect = Arrays.asList(item2, item1);
-        Collections.sort(items, new SortItemInNaturalOrder());
+        Comparator<Item> comparator = new SortItemInNaturalOrder();
+        Comparator.nullsLast(comparator);
+        Collections.sort(items, comparator);
         assertThat(items, is(expect));
     }
 
-    @Test
-    public void sortWhenSomeItemIsNull() {
-        Item item1 = null;
-        Item item2 = new Item("Reboot");
-        item2.setId("321");
-        List<Item> items = new ArrayList<>();
-        items.add(item1);
-        items.add(item2);
-        List<Item> expect = Arrays.asList(item2, item1);
-        Collections.sort(items, new SortItemInNaturalOrder());
-        assertThat(items, is(expect));
-    }
-
-    @Test
+    @Test(expected = NullPointerException.class)
     public void sortWhenIdIsNull() {
         Item item1 = new Item("Bug Report");
         Item item2 = new Item("Reboot");
@@ -61,12 +49,10 @@ public class SortItemInNaturalOrderTest {
         List<Item> items = new ArrayList<>();
         items.add(item1);
         items.add(item2);
-        List<Item> expect = Arrays.asList(item2, item1);
         Collections.sort(items, new SortItemInNaturalOrder());
-        assertThat(items, is(expect));
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void sortWhenNameIsNull() {
         Item item1 = new Item(null);
         Item item2 = new Item("Reboot");
@@ -75,8 +61,6 @@ public class SortItemInNaturalOrderTest {
         List<Item> items = new ArrayList<>();
         items.add(item1);
         items.add(item2);
-        List<Item> expect = Arrays.asList(item2, item1);
         Collections.sort(items, new SortItemInNaturalOrder());
-        assertThat(items, is(expect));
     }
 }
