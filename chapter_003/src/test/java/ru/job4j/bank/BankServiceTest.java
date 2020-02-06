@@ -49,6 +49,20 @@ public class BankServiceTest {
     }
 
     @Test
+    public void findByRequisiteWhenUserNotFound() {
+        User user = new User("3434", "Petr Arsentev");
+        BankService bank = new BankService();
+        bank.addUser(user);
+        Account account1 = new Account("5546", 150);
+        Account account2 = new Account("113", 50);
+        bank.addAccount(user.getPassport(), account1);
+        bank.addAccount(user.getPassport(), account2);
+        Account result = bank.findByRequisite("Wrong User", account2.getRequisite());
+        Account expected = null;
+        assertThat(result, is(expected));
+    }
+
+    @Test
     public void transferMoney() {
         User user = new User("3434", "Petr Arsentev");
         BankService bank = new BankService();
