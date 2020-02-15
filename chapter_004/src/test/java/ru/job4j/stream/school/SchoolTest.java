@@ -1,8 +1,6 @@
 package ru.job4j.stream.school;
 
 import org.junit.Test;
-import ru.job4j.stream.school.School;
-import ru.job4j.stream.school.Student;
 
 import java.util.List;
 import java.util.Map;
