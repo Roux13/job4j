@@ -1,4 +1,4 @@
-package ru.job4j.stream;
+package ru.job4j.stream.school;
 
 import java.util.List;
 import java.util.function.Predicate;

@@ -1,8 +1,9 @@
-package ru.job4j.stream;
+package ru.job4j.stream.school;
 
 import org.junit.Test;
+import ru.job4j.stream.school.School;
+import ru.job4j.stream.school.Student;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
