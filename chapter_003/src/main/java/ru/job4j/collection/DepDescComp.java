@@ -10,8 +10,8 @@ public class DepDescComp implements Comparator<String> {
         String[] o2Elements = o2.split("/");
         int length = Integer.min(o1Elements.length, o2Elements.length);
         for (int i = 0; i < length; i++) {
-            result = o2Elements[i].compareTo(o1Elements[i]);
-            if (result != 0) {
+            if (!o2Elements[i].equals(o1Elements[i])) {
+                result = o2Elements[i].compareTo(o1Elements[i]);
                 break;
             }
         }
