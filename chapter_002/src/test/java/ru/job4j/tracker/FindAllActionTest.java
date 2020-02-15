@@ -20,7 +20,7 @@ public class FindAllActionTest {
         Item item = new Item("fix bug");
         tracker.add(item);
         FindAllAction act = new FindAllAction();
-        act.execute(new StubInput(new String[] {}), tracker);
+        act.execute(new StubInput(new String[] {}), tracker, System.out::println);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("=== The list of all Items ====")
                 .add(item.getId() + " " + item.getName())

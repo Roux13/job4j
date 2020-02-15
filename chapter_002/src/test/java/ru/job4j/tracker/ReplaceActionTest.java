@@ -15,7 +15,7 @@ public class ReplaceActionTest {
         Item item = new Item(newMessage);
         tracker.add(item);
         String[] answers = {item.getId(), replacedMessage};
-        new ReplaceAction().execute(new StubInput(answers), tracker);
+        new ReplaceAction().execute(new StubInput(answers), tracker, System.out::println);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is(replacedMessage));
     }
@@ -28,7 +28,7 @@ public class ReplaceActionTest {
         Item item = new Item(newMessage);
         tracker.add(item);
         String[] answers = {item.getId(), replacedMessage};
-        new ReplaceAction().execute(new StubInput(answers), tracker);
+        new ReplaceAction().execute(new StubInput(answers), tracker, System.out::println);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is(replacedMessage));
     }
@@ -41,7 +41,7 @@ public class ReplaceActionTest {
         Item item = new Item(newMessage);
         tracker.add(item);
         String[] answers = {item.getId(), replacedMessage};
-        new ReplaceAction().execute(new StubInput(answers), tracker);
+        new ReplaceAction().execute(new StubInput(answers), tracker, System.out::println);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is(replacedMessage));
     }

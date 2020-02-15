@@ -16,7 +16,7 @@ public class ValidateInputTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         ValidateInput validateInput = new ValidateInput(
-                new StubInput(new String[] {"one", "1"}));
+                new StubInput(new String[] {"one", "1"}), System.out::println);
         validateInput.askInt("Enter");
         assertThat(out.toString(), is(String.format("Please enter validate data again.%n")));
         System.setOut(std);
@@ -25,7 +25,7 @@ public class ValidateInputTest {
     @Test
     public void whenValidInput() {
         ValidateInput validateInput = new ValidateInput(
-                new StubInput(new String[] {"0"}));
+                new StubInput(new String[] {"0"}), System.out::println);
         int result = validateInput.askInt("Enter");
         assertThat(result, is(0));
     }
@@ -36,7 +36,7 @@ public class ValidateInputTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         ValidateInput validateInput = new ValidateInput(
-                new StubInput(new String[] {"1", "0"}));
+                new StubInput(new String[] {"1", "0"}), System.out::println);
         validateInput.askInt("Enter", 1);
         assertThat(out.toString(), is(String.format("Please select key from menu.%n")));
         System.setOut(std);
@@ -45,7 +45,7 @@ public class ValidateInputTest {
     @Test
     public void whenValidKey() {
         ValidateInput validateInput = new ValidateInput(
-                new StubInput(new String[] {"0"}));
+                new StubInput(new String[] {"0"}), System.out::println);
         int result = validateInput.askInt("Enter", 1);
         assertThat(result, is(0));
 

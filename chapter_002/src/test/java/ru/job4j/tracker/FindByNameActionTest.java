@@ -23,7 +23,7 @@ public class FindByNameActionTest {
         tracker.add(item);
         FindByNameAction act = new FindByNameAction();
         StubInput stubInput = new StubInput(new String[]{findName});
-        act.execute(stubInput, tracker);
+        act.execute(stubInput, tracker, System.out::println);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("=== Search Items by name ===")
                 .add(item.getId() + " " + findName)
@@ -43,7 +43,7 @@ public class FindByNameActionTest {
         tracker.add(item);
         FindByNameAction act = new FindByNameAction();
         StubInput stubInput = new StubInput(new String[]{findName});
-        act.execute(stubInput, tracker);
+        act.execute(stubInput, tracker, System.out::println);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("=== Search Items by name ===")
                 .toString();
