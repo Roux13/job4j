@@ -1,11 +1,9 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class StartUI {
-
 
     private final Input input;
     private final Tracker tracker;
