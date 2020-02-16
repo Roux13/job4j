@@ -1,5 +1,6 @@
 package ru.job4j.stream.school;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -10,15 +11,24 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class SchoolTest {
 
-    @Test
-    public void collectWhenAThenScoresFrom70to100() {
-        Student student10 = new Student("Sidorov", 10);
-        Student student30 = new Student("Petrov", 30);
-        Student student50 = new Student("Belkin", 50);
-        Student student70 = new Student("Cherniy", 70);
-        Student student90 = new Student("Churilin", 90);
-        Student student100 = new Student("Grishin", 100);
-        List<Student> students = List.of(
+    private Student student10;
+    private Student student30;
+    private Student student50;
+    private Student student70;
+    private Student student90;
+    private Student student100;
+
+    private List<Student> students;
+
+    @Before
+    public void before() {
+        student10 = new Student("Sidorov", 10);
+        student30 = new Student("Petrov", 30);
+        student50 = new Student("Belkin", 50);
+        student70 = new Student("Cherniy", 70);
+        student90 = new Student("Churilin", 90);
+        student100 = new Student("Grishin", 100);
+        students = List.of(
                 student10,
                 student100,
                 student50,
@@ -26,6 +36,10 @@ public class SchoolTest {
                 student70,
                 student90
         );
+    }
+
+    @Test
+    public void collectWhenAThenScoresFrom70to100() {
         List<Student> expect = List.of(
                 student100,
                 student70,
@@ -37,20 +51,6 @@ public class SchoolTest {
 
     @Test
     public void collectWhenBThenScoresFrom50to70() {
-        Student student10 = new Student("Sidorov", 10);
-        Student student30 = new Student("Petrov", 30);
-        Student student50 = new Student("Belkin", 50);
-        Student student70 = new Student("Cherniy", 70);
-        Student student90 = new Student("Churilin", 90);
-        Student student100 = new Student("Grishin", 100);
-        List<Student> students = List.of(
-                student10,
-                student100,
-                student50,
-                student30,
-                student70,
-                student90
-        );
         List<Student> expect = List.of(
                 student50
         );
@@ -60,20 +60,6 @@ public class SchoolTest {
 
     @Test
     public void collectWhenCThenScoresFrom0to50() {
-        Student student10 = new Student("Sidorov", 10);
-        Student student30 = new Student("Petrov", 30);
-        Student student50 = new Student("Belkin", 50);
-        Student student70 = new Student("Cherniy", 70);
-        Student student90 = new Student("Churilin", 90);
-        Student student100 = new Student("Grishin", 100);
-        List<Student> students = List.of(
-                student10,
-                student100,
-                student50,
-                student30,
-                student70,
-                student90
-        );
         List<Student> expect = List.of(
                 student10,
                 student30
@@ -84,20 +70,6 @@ public class SchoolTest {
 
     @Test
     public void convertListOfAllStudentsToMap() {
-        Student student10 = new Student("Sidorov", 10);
-        Student student30 = new Student("Petrov", 30);
-        Student student50 = new Student("Belkin", 50);
-        Student student70 = new Student("Cherniy", 70);
-        Student student90 = new Student("Churilin", 90);
-        Student student100 = new Student("Grishin", 100);
-        List<Student> students = List.of(
-                student10,
-                student30,
-                student50,
-                student70,
-                student90,
-                student100
-                );
         Map<String, Student> expect = Map.of(
                 student10.getLastName(), student10,
                 student30.getLastName(), student30,
