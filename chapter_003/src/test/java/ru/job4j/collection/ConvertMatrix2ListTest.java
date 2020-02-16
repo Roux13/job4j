@@ -9,43 +9,43 @@ import static org.junit.Assert.assertThat;
 public class ConvertMatrix2ListTest {
     @Test
     public void when2on2ArrayThenList4() {
-        ConvertMatrix2List list = new ConvertMatrix2List();
+        ConvertMatrix2List converter = new ConvertMatrix2List();
         int[][] input = {
                 {1, 2},
                 {3, 4}
         };
-        List<Integer> expect = Arrays.asList(
+        List<Integer> expect = List.of(
                 1, 2, 3, 4
         );
-        List<Integer> result = list.toList(input);
+        List<Integer> result = converter.toList(input);
         assertThat(result, is(expect));
     }
 
     @Test
     public void when3on1ArrayThenList3() {
-        ConvertMatrix2List list = new ConvertMatrix2List();
+        ConvertMatrix2List converter = new ConvertMatrix2List();
         int[][] input = {
                 {1},
                 {2},
                 {3}
         };
-        List<Integer> expect = Arrays.asList(
+        List<Integer> expect = List.of(
                 1, 2, 3
         );
-        List<Integer> result = list.toList(input);
+        List<Integer> result = converter.toList(input);
         assertThat(result, is(expect));
     }
 
     @Test
     public void when1on5ArrayThenList5() {
-        ConvertMatrix2List list = new ConvertMatrix2List();
+        ConvertMatrix2List converter = new ConvertMatrix2List();
         int[][] input = {
                 {1, 2, 3, 4, 5}
         };
-        List<Integer> expect = Arrays.asList(
+        List<Integer> expect = List.of(
                 1, 2, 3, 4, 5
         );
-        List<Integer> result = list.toList(input);
+        List<Integer> result = converter.toList(input);
         assertThat(expect, is(result));
     }
 }
