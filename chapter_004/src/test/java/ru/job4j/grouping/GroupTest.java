@@ -42,4 +42,34 @@ public class GroupTest {
         Map<String, Set<String>> actual = Group.sections(List.of(student1));
         assertThat(actual, is(expected));
     }
+
+    @Test
+    public void sectionsWhenTwoStudentOneSections() {
+        Set<String> units1 = Set.of(section1);
+        Set<String> units2 = Set.of(section1);
+        Student student1 = new Student("Ivan", units1);
+        Student student2 = new Student("Boris", units2);
+        Map<String, Set<String>> expected = Map.of(
+                section1, Set.of(student1.getName(), student2.getName())
+        );
+        Map<String, Set<String>> actual = Group.sections(List.of(student1, student2));
+        assertThat(actual, is(expected));
+    }
+
+    @Test
+    public void sectionsWhenManyStudentThreeSections() {
+        Set<String> units1 = Set.of(section1);
+        Set<String> units2 = Set.of(section2, section3);
+        Set<String> units3 = Set.of(section1, section3);
+        Student student1 = new Student("Ivan", units1);
+        Student student2 = new Student("Boris", units2);
+        Student student3 = new Student("John", units3);
+        Map<String, Set<String>> expected = Map.of(
+                section1, Set.of(student1.getName(), student3.getName()),
+                section2, Set.of(student2.getName()),
+                section3, Set.of(student2.getName(), student3.getName())
+        );
+        Map<String, Set<String>> actual = Group.sections(List.of(student1, student2, student3));
+        assertThat(actual, is(expected));
+    }
 }

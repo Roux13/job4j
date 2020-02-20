@@ -1,10 +1,7 @@
 package ru.job4j.grouping;
 
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,8 +12,15 @@ public class Group {
         return students.stream()
                 .flatMap(Stream::ofNullable)
                 .flatMap(student -> student.getUnits().stream()
-                        .map(u -> new Holder(u, student.getName())))
-                .collect(Collectors.toMap(holder -> holder.key, holder -> Set.of(holder.value)));
+                        .map(unit -> new Holder(unit, student.getName())))
+                .collect(
+                        Collectors.groupingBy(Holder::getKey,
+                                Collector.of(HashSet::new,
+                                        (set, holder) -> set.add(holder.getValue()),
+                                        (left, right) -> {
+                                                    left.addAll(right); return left;
+                                                    }
+                                                    )));
     }
 
     static class Holder {
@@ -25,6 +29,14 @@ public class Group {
         Holder(String key, String value) {
             this.key = key;
             this.value = value;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public String getValue() {
+            return value;
         }
     }
 }
