@@ -4,6 +4,11 @@ import java.util.function.Consumer;
 
 public class StubAction implements UserAction {
     private boolean call = false;
+    private Callback callback;
+
+    public StubAction(Callback callback) {
+        this.callback = callback;
+    }
 
     @Override
     public String name() {
@@ -11,9 +16,9 @@ public class StubAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+        callback.shutdown();
         call = true;
-        return false;
     }
 
     public boolean isCall() {

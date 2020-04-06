@@ -10,12 +10,11 @@ public class FindAllAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
         output.accept("=== The list of all Items ====");
         List<Item> allItems = tracker.findAll();
         for (Item item : allItems) {
             output.accept(item.getId() + " " + item.getName());
         }
-        return true;
     }
 }

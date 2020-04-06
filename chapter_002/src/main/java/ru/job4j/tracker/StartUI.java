@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class StartUI {
+public class StartUI implements Callback{
 
     private final Input input;
     private final Tracker tracker;
@@ -11,21 +11,24 @@ public class StartUI {
 
     private static final String SEPARATOR = "==============================";
 
+    private boolean run;
+
     public StartUI(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
         this.output = output;
+        this.run = true;
     }
 
     public void init(List<UserAction> actions) {
-        boolean run = true;
+
         while (run) {
             this.showMenu(actions);
                 int select = this.input.askInt(
                         String.format("Enter a number from 0 to %d: ", actions.size() - 1), actions.size()
                 );
                 UserAction action = actions.get(select);
-                run = action.execute(this.input, this.tracker, this.output);
+                action.execute(this.input, this.tracker, this.output);
             this.output.accept(SEPARATOR);
         }
     }
@@ -37,4 +40,12 @@ public class StartUI {
         }
     }
 
+    @Override
+    public void shutdown() {
+        run = false;
+    }
+
+    public boolean isRun() {
+        return run;
+    }
 }

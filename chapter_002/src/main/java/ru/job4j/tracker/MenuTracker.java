@@ -10,6 +10,7 @@ public class MenuTracker {
         Consumer<String> output = System.out::println;
         Input validateInput = new ValidateInput(new ConsoleInput(), output);
         Tracker tracker = new Tracker();
+        StartUI startUI = new StartUI(validateInput, tracker, output);
         List<UserAction> actions = Arrays.asList(
                 new CreateAction(),
                 new FindAllAction(),
@@ -17,8 +18,8 @@ public class MenuTracker {
                 new DeleteAction(),
                 new FindByIdAction(),
                 new FindByNameAction(),
-                new ExitAction()
+                new ExitAction(startUI)
         );
-        new StartUI(validateInput, tracker, output).init(actions);
+        startUI.init(actions);
     }
 }

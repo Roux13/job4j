@@ -9,7 +9,7 @@ public class ReplaceAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
         output.accept("=== Replace the Item ===");
         String id = input.askStr("Enter id of Item for replacing: ");
         String newName = input.askStr("Enter new Item name: ");
@@ -18,6 +18,5 @@ public class ReplaceAction implements UserAction {
         } else {
             output.accept("The Item with id \"" + id + "\" is not found.");
         }
-        return true;
     }
 }

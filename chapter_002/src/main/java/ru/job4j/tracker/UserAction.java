@@ -6,6 +6,6 @@ public interface UserAction {
 
     String name();
 
-    boolean execute(Input input, Tracker tracker, Consumer<String> output);
+    void execute(Input input, Tracker tracker, Consumer<String> output);
 
 }

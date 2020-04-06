@@ -9,7 +9,7 @@ public class DeleteAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
         output.accept("=== Delete the Item ===");
         String id = input.askStr("Enter id of Item for deleting: ");
         if (tracker.delete(id)) {
@@ -17,6 +17,5 @@ public class DeleteAction implements UserAction {
         } else {
             System.out.println("The Item with id \"" + id + "\" is not found.");
         }
-        return true;
     }
 }
