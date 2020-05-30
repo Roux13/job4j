@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class StartUI implements Callback{
+public class StartUI implements Callback {
 
     private final Input input;
     private final Tracker tracker;
